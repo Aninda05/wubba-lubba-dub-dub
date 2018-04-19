@@ -1,0 +1,60 @@
+#include<stdio.h>
+
+struct Proc{
+	int b;
+	int wt,ta,rt;
+	}p[10],t;
+	
+int main(){
+	int i,j,c,n,tq,prt,prt1,hb,m;
+	float g=0,at=0,aw=0;
+	printf("Enter the range\n");
+	scanf("%d",&n);
+	
+	printf("Enter the burst times\n");
+	for(i=0;i<n;i++){
+		scanf("%d",&p[i].b);
+		p[i].rt=p[i].b;	
+	}
+			
+	printf("Enter time quantum\n");
+	scanf("%d",&tq);
+	hb=p[0].b;
+	
+	for(i=1;i<n;i++){
+		if(p[i].b>hb)
+			hb=p[i].b;
+		}
+		m=hb/tq;
+		if(hb%tq!=0)
+			m++;
+	//prt=b[i]/2;
+	//prt1=p[i].b%2;
+	
+	//if(prt1==1)
+	//	prt+=1;
+		
+	for(j=0;j<prt;j++){	
+		for(i=0;i<n;i++){
+			if(p[i].rt>tq){
+				g+=(float)tq;			
+				p[i].rt=p[i].rt-tq;
+			}
+			else if(p[i].rt>0)	{			
+			g+=(float)p[i].rt;
+			p[i].rt=0;
+			p[i].ta=g;
+			p[i].wt=p[i].ta-p[i].b;
+			at+=(float)p[i].ta;
+			aw+=(float)p[i].wt;
+			}
+		}
+	}
+	
+		printf("TurnAround is %.2f\n",at);
+		printf("Waiting is %.2f\n",aw);
+		printf("Average of TurnAround is %.2f\n",(at/n));
+		printf("Average of Waiting is %.2f\n",(aw/n));
+	
+	return 0;
+}

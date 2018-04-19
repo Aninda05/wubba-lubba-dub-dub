@@ -1,0 +1,9 @@
+#include<sys/types.h>
+#include<stdio.h>
+int main()
+{
+	printf("Before Child");
+	fork();
+	printf("After Child");
+	return 0;
+}
